@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './common/globalStyle';
 import theme from './common/theme';
 import GNB from './component/GNB';
-import SearchBar from './components/search-bar/SearchBar';
+import SearchBar from './component/search-bar/SearchBar';
 
 function App() {
   return (
