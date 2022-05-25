@@ -1,8 +1,9 @@
 import { CustomThemeProvider } from './custom-styled-component/CustomThemeProvider';
-import theme from './common/theme';
-import GNB from './component/GNB';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './common/globalStyle';
+import theme from './common/theme';
+import GNB from './component/GNB';
+import SearchBar from './components/search-bar/SearchBar';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <GNB />
+        <SearchBar />
       </ThemeProvider>
     </CustomThemeProvider>
   );
