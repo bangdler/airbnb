@@ -15,7 +15,7 @@ function GNB() {
 
 const StyledContainer = customStyled.div`
   width: 1280px;
-  margin: 24px auto 0 auto;
+  margin: 24px 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -20,6 +20,7 @@ const StyledDiv = customStyled.div`
   gap: 10px;
   border-radius: ${({ theme }) => theme.borderRadius.radius3};
   border: 1px solid ${({ theme }) => theme.color.grey4};
+  background: ${({ theme }) => theme.color.white};
 `;
 
 export default AccountMenu;
