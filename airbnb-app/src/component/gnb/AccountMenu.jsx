@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import customStyled from '../../custom-styled-component/customStyled';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -11,7 +11,7 @@ function AccountMenu() {
   );
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = customStyled.div`
   display: flex;
   width: 76px;
   height: 40px;

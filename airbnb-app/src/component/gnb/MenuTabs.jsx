@@ -1,23 +1,23 @@
-import styled from 'styled-components';
+import customStyled from '../../custom-styled-component/customStyled';
 
 function MenuTabs() {
   const menuList = ['숙소', '체험', '온라인 체험'];
 
   return (
     <StyledContainer>
-      {menuList.map(menu => (
-        <StyledTab>{menu}</StyledTab>
+      {menuList.map((menu, key) => (
+        <StyledTab key={key}>{menu}</StyledTab>
       ))}
     </StyledContainer>
   );
 }
 
-const StyledContainer = styled.ul`
+const StyledContainer = customStyled.ul`
   display: flex;
   gap: 24px;
 `;
 
-const StyledTab = styled.li`
+const StyledTab = customStyled.li`
   height: 23px;
   line-height: 23px;
   font-size: ${({ theme }) => theme.fontSize.large};
