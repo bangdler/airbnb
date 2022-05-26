@@ -1,4 +1,5 @@
 import customStyled from '../../custom-styled-component/customStyled';
+import styled from 'styled-components';
 
 function MenuTabs() {
   const menuList = ['숙소', '체험', '온라인 체험'];
@@ -17,12 +18,17 @@ const StyledContainer = customStyled.ul`
   gap: 24px;
 `;
 
-const StyledTab = customStyled.li`
+const StyledTab = styled.li`
   height: 23px;
   line-height: 23px;
   font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   color: ${({ theme }) => theme.color.grey1};
+  cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.color.grey3};
+    text-decoration: underline;
+  }
 `;
 
 export default MenuTabs;

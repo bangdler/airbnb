@@ -12,6 +12,7 @@ const StyledTitle = customStyled.h1`
   font-size: ${({ theme }) => theme.fontSize.logo};
   font-weight: ${({ theme }) => theme.fontWeight.logo};
   color: ${({ theme }) => theme.color.grey1};
+  cursor: pointer;
 `;
 
 export default Logo;

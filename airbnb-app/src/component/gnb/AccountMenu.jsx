@@ -5,8 +5,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 function AccountMenu() {
   return (
     <StyledDiv>
-      <DehazeIcon sx={{ fontSize: 24 }} />
-      <AccountCircleIcon sx={{ fontSize: 32 }} />
+      <DehazeIcon sx={{ fontSize: 24, cursor: 'pointer' }} />
+      <AccountCircleIcon sx={{ fontSize: 32, cursor: 'pointer' }} />
     </StyledDiv>
   );
 }
