@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function DayOfWeek() {
+function Days() {
   const days = ['일', '월', '화', '수', '목', '금', '토'];
 
   return (
@@ -36,4 +36,4 @@ const StyledDay = styled.div`
   }}
 `;
 
-export default DayOfWeek;
+export default Days;

@@ -1,35 +1,32 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { CalenderDateContext } from '@component/calender/CalenderDateProvider';
 import CalenderPage from '@component/calender/CalenderPage';
 import PrevButton from '@component/calender/PrevButton';
 import NextButton from '@component/calender/NextButton';
 
-const today = new Date();
-
 function Calender({ page = 1 }) {
-  // option : 보여줄 page 수
-  // 상태 : 현재 날짜,
-  const [curDate, setCurDate] = useState({ year: today.getFullYear(), month: today.getMonth() + 1 });
+  const { curDate } = useContext(CalenderDateContext);
 
-  const displayArray = getDisplayArray();
+  const displayPageArray = getDisplayPageArray(curDate);
 
-  function getDisplayArray() {
-    const displayArray = [curDate];
+  function getDisplayPageArray(curDate) {
+    const displayPageArray = [curDate];
     for (let i = 1; i < page; i++) {
-      const prevYear = displayArray[i - 1].year;
-      const prevMonth = displayArray[i - 1].month;
+      const prevYear = displayPageArray[i - 1].year;
+      const prevMonth = displayPageArray[i - 1].month;
       const newDate = prevMonth === 12 ? { year: prevYear + 1, month: 1 } : { year: prevYear, month: prevMonth + 1 };
-      displayArray.push(newDate);
+      displayPageArray.push(newDate);
     }
-    return displayArray;
+    return displayPageArray;
   }
 
   return (
     <StyledContainer page={page}>
-      <PrevButton curDate={curDate} setCurDate={setCurDate} />
-      <NextButton curDate={curDate} setCurDate={setCurDate} />
+      <PrevButton />
+      <NextButton />
       <StyledCalenderPageWrapper page={page}>
-        {displayArray.map((date, idx) => (
+        {displayPageArray.map((date, idx) => (
           <CalenderPage key={idx} date={date} />
         ))}
       </StyledCalenderPageWrapper>
