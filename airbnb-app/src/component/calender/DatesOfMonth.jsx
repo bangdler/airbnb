@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Date from '@component/calender/Date';
+import DateBox from '@component/calender/DateBox';
 
-function DateOfMonth({ date }) {
+function DatesOfMonth({ date }) {
   const year = date.year;
   const month = date.month;
   const firstDay = new Date(year, month - 1, 1).getDay();
@@ -11,7 +11,6 @@ function DateOfMonth({ date }) {
   function getDateArray() {
     // 이전달 빈칸
     const blanks = Array(firstDay).fill(0);
-    // 이번달
     const dates = Array.from({ length: lastDate }, (_, idx) => idx + 1);
 
     return [...blanks, ...dates];
@@ -20,7 +19,7 @@ function DateOfMonth({ date }) {
   return (
     <StyledDatesWrapper>
       {dateArray.map((date, idx) => (
-        <Date key={idx} year={year} month={month} date={date} />
+        <DateBox key={idx} year={year} month={month} date={date} />
       ))}
     </StyledDatesWrapper>
   );
@@ -31,4 +30,4 @@ const StyledDatesWrapper = styled.div`
   grid-template-columns: repeat(7, 1fr);
 `;
 
-export default DateOfMonth;
+export default DatesOfMonth;
