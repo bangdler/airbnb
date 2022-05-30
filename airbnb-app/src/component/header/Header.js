@@ -19,6 +19,8 @@ function Header() {
 
 const Container = customStyled.div`
   box-sizing: border-box;
+  position: fixed;
+  width: 100%;
   min-width: 900px;
   padding: 0 30px;
 `;
