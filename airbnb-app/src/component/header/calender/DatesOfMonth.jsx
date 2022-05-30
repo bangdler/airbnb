@@ -10,9 +10,12 @@ function DatesOfMonth({ date }) {
 
   return (
     <StyledDatesWrapper>
-      {dateArray.map((date, idx) => (
-        <DateBox key={idx} year={year} month={month} date={date} lastDate={lastDate} />
-      ))}
+      {dateArray.map((date, idx) => {
+        if (isBeforeToday({ year, month, date })) {
+          return <DateBox key={idx} year={year} month={month} date={date} disabled={true} />;
+        }
+        return <DateBox key={idx} year={year} month={month} date={date} lastDate={lastDate} />;
+      })}
     </StyledDatesWrapper>
   );
 }
@@ -23,6 +26,17 @@ function getDateArray({ firstDay, lastDate }) {
   const dates = Array.from({ length: lastDate }, (_, idx) => idx + 1);
 
   return [...blanks, ...dates];
+}
+
+function isBeforeToday({ year, month, date }) {
+  const today = new Date();
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth() + 1;
+  const todayDate = today.getDate();
+  if (todayYear > year) return true;
+  if (todayYear === year && todayMonth > month) return true;
+  if (todayYear === year && todayMonth === month && todayDate > date) return true;
+  return false;
 }
 
 const StyledDatesWrapper = styled.div`

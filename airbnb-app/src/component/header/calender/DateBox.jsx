@@ -3,11 +3,10 @@ import { useContext } from 'react';
 import { CalenderDateContext } from '@/component/header/calender/CalenderDateProvider';
 import { CALENDER_MODE, DATE_CHECK_STATE } from '@/constants/calenderText';
 
-function DateBox({ year, month, date, lastDate }) {
+function DateBox({ year, month, date, lastDate, disabled }) {
   const { mode, setMode, setCheckInInfo, setCheckOutInfo, checkInTime, checkOutTime } = useContext(CalenderDateContext);
 
   const currentTime = new Date(`${year}-${month}-${date}`).getTime();
-
   const checkState = getCheckStateOfCurrent({ currentTime, checkInTime, checkOutTime });
 
   function handleClick() {
@@ -34,7 +33,7 @@ function DateBox({ year, month, date, lastDate }) {
   return (
     <StyledBackground checkState={checkState}>
       {!date ? null : (
-        <StyledDate checkState={checkState} onClick={handleClick}>
+        <StyledDate disabled={disabled} checkState={checkState} onClick={handleClick}>
           {date}
         </StyledDate>
       )}
@@ -100,6 +99,9 @@ const StyledDate = styled.div`
   line-height: 17px;
   cursor: pointer;
   border: 1px solid white;
+  &:hover {
+    border: 1px solid black;
+  }
   ${({ checkState }) => {
     if (checkState === DATE_CHECK_STATE.CHECKIN || checkState === DATE_CHECK_STATE.CHECKOUT) {
       return `background-color: black; color:white; font-weight:600;`;
@@ -108,10 +110,14 @@ const StyledDate = styled.div`
       return `border: 1px solid #F5F5F7;`;
     }
   }}
-
-  &:hover {
-    border: 1px solid black;
-  }
+  ${({ disabled }) => {
+    if (disabled) {
+      return `
+      color: #BDBDBD;
+      pointer-events: none;
+      `;
+    }
+  }}
 `;
 
 export default DateBox;
