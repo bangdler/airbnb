@@ -1,29 +1,27 @@
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
-import ResetButton from './ResetButton';
-import SearchButton from './SearchButton';
-import { useState } from 'react';
+import ResetButton from '@/component/header/search-bar/ResetButton';
+import SearchButton from '@/component/header/search-bar/SearchButton';
+import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 
-function SearchInput({ label, placeholder, isLastElement, isCurrentInput, isFocus, setCurrentInput }) {
+function SearchInput({ label, placeholder, isLastElement }) {
+  const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
+
   const [isFilled, setIsFilled] = useState(false);
-
-  const handleFocus = label => {
-    setCurrentInput(label);
-  };
 
   return (
     <Container
-      bgColor={isCurrentInput ? 'white' : null}
-      isLastElement={isLastElement}
+      bgColor={currentInput === label ? 'white' : null}
+      width={isLastElement ? 280 : 180}
       tabIndex="0"
-      onFocus={() => handleFocus(label)}
+      onFocus={() => updateFocusState(label)}
     >
       <div>
         <Label>{label}</Label>
-        <Input type="text" placeholder={placeholder} readOnly />
+        <Input type="text" placeholder={placeholder} value={'값넣기'} readOnly />
       </div>
       <ResetButton display={isFilled ? 'block' : 'none'} />
-      {isLastElement ? null : <Line />}
-      {isLastElement ? <SearchButton isFocus={isFocus} /> : null}
+      {isLastElement ? <SearchButton isFocus={isFocus} /> : <Line />}
     </Container>
   );
 }
@@ -32,9 +30,7 @@ const Container = styled.div`
   position: relative;
   display: inline-flex;
   align-items: center;
-  ${({ isLastElement }) => {
-    return isLastElement ? `width: 280px;` : `width: 180px;`;
-  }}
+  width: ${({ width }) => width}px;
   height: 37px;
   padding: 20px 30px;
   border-radius: ${({ theme }) => theme.borderRadius.radius1};
