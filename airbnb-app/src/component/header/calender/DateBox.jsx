@@ -4,33 +4,29 @@ import { CalenderDateContext } from '@/component/header/calender/CalenderDatePro
 import { CALENDER_MODE, DATE_CHECK_STATE } from '@/constants/calenderText';
 
 function DateBox({ year, month, date }) {
-  const { mode, setMode, checkInDate, setCheckInDate, checkOutDate, setCheckOutDate } = useContext(CalenderDateContext);
+  const { mode, setMode, setCheckInInfo, setCheckOutInfo, checkInTime, checkOutTime } = useContext(CalenderDateContext);
 
-  const current = new Date(`${year}-${month}-${date}`);
-  const checkIn =
-    checkInDate === null ? new Date(0) : new Date(`${checkInDate.year}-${checkInDate.month}-${checkInDate.date}`);
-  const checkOut =
-    checkOutDate === null ? new Date(0) : new Date(`${checkOutDate.year}-${checkOutDate.month}-${checkOutDate.date}`);
+  const currentTime = new Date(`${year}-${month}-${date}`).getTime();
 
-  const checkState = getCheckStateOfCurrent({ current, checkIn, checkOut });
+  const checkState = getCheckStateOfCurrent({ currentTime, checkInTime, checkOutTime });
 
   function handleClick() {
     // 검색바에서 체크인을 누른 경우 - 체크인을 바꾼다. 체크아웃 날짜와 비교
     if (mode === CALENDER_MODE.CHECKIN) {
-      if (checkInDate && checkOutDate && current > checkOut) {
-        setCheckOutDate(null);
+      if (checkInTime && checkOutTime && currentTime > checkOutTime) {
+        setCheckOutInfo(null);
       }
-      setCheckInDate({ year, month, date });
+      setCheckInInfo({ year, month, date });
       setMode(CALENDER_MODE.CHECKOUT);
       return;
       // 검색바에서 체크아웃을 누른 경우 -  체크아웃을 바꾼다. 체크인 날짜와 비교
     } else if (mode === CALENDER_MODE.CHECKOUT) {
-      if (checkInDate && checkOutDate && checkIn > current) {
-        setCheckOutDate(null);
-        setCheckInDate({ year, month, date });
+      if (checkInTime && checkOutTime && checkInTime > currentTime) {
+        setCheckOutInfo(null);
+        setCheckInInfo({ year, month, date });
         return;
       }
-      setCheckOutDate({ year, month, date });
+      setCheckOutInfo({ year, month, date });
       return;
     }
   }
@@ -44,10 +40,10 @@ function DateBox({ year, month, date }) {
   );
 }
 
-function getCheckStateOfCurrent({ current, checkIn, checkOut }) {
-  if (current.getTime() === checkIn.getTime()) return DATE_CHECK_STATE.CHECKIN;
-  if (current.getTime() === checkOut.getTime()) return DATE_CHECK_STATE.CHECKOUT;
-  if (current > checkIn && current < checkOut) return DATE_CHECK_STATE.BETWEEN;
+function getCheckStateOfCurrent({ currentTime, checkInTime, checkOutTime }) {
+  if (currentTime === checkInTime) return DATE_CHECK_STATE.CHECKIN;
+  if (currentTime === checkOutTime) return DATE_CHECK_STATE.CHECKOUT;
+  if (currentTime > checkInTime && currentTime < checkOutTime) return DATE_CHECK_STATE.BETWEEN;
   return false;
 }
 
