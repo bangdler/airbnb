@@ -11,6 +11,7 @@ function ResetButton({ display = 'none' }) {
 
 const IconButton = styled.button`
   display: ${({ display }) => display};
+  margin-left: auto;
   width: 20px;
   height: 20px;
   background-color: ${({ theme }) => theme.color.grey6};
