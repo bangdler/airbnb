@@ -5,13 +5,13 @@ function DatesOfMonth({ date }) {
   const year = date.year;
   const month = date.month;
   const firstDay = new Date(year, month - 1, 1).getDay();
-  const lastDate = new Date(year, month - 1, 0).getDate();
+  const lastDate = new Date(year, month, 0).getDate();
   const dateArray = getDateArray({ firstDay, lastDate });
 
   return (
     <StyledDatesWrapper>
       {dateArray.map((date, idx) => (
-        <DateBox key={idx} year={year} month={month} date={date} />
+        <DateBox key={idx} year={year} month={month} date={date} lastDate={lastDate} />
       ))}
     </StyledDatesWrapper>
   );

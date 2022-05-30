@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { CalenderDateContext } from '@/component/header/calender/CalenderDateProvider';
 import { CALENDER_MODE, DATE_CHECK_STATE } from '@/constants/calenderText';
 
-function DateBox({ year, month, date }) {
+function DateBox({ year, month, date, lastDate }) {
   const { mode, setMode, setCheckInInfo, setCheckOutInfo, checkInTime, checkOutTime } = useContext(CalenderDateContext);
 
   const currentTime = new Date(`${year}-${month}-${date}`).getTime();
@@ -38,6 +38,7 @@ function DateBox({ year, month, date }) {
           {date}
         </StyledDate>
       )}
+      <StyledExpandBackground checkState={checkState} date={date} lastDate={lastDate} />
     </StyledBackground>
   );
 }
@@ -50,6 +51,7 @@ function getCheckStateOfCurrent({ currentTime, checkInTime, checkOutTime }) {
 }
 
 const StyledBackground = styled.div`
+  position: relative;
   ${({ checkState }) => {
     if (checkState === DATE_CHECK_STATE.CHECKIN) {
       return `background: linear-gradient(90deg, #fff 50%, #F5F5F7 50%)`;
@@ -60,6 +62,31 @@ const StyledBackground = styled.div`
     }
   }}
 `;
+
+const StyledExpandBackground = styled.div`
+  ${({ checkState, date, lastDate }) => {
+    if (checkState === DATE_CHECK_STATE.BETWEEN && date === 1) {
+      return `
+      position: absolute;
+      top: 0;
+      left: -50px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(270deg, #F5F5F7 30%, #fff);
+      `;
+    } else if (checkState === DATE_CHECK_STATE.BETWEEN && date === lastDate) {
+      return `
+      position: absolute;
+      top: 0;
+      right: -50px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(90deg, #F5F5F7 30%, #fff);
+      `;
+    }
+  }}
+`;
+
 const StyledDate = styled.div`
   display: flex;
   align-items: center;
