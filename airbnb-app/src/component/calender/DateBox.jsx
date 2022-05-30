@@ -53,7 +53,7 @@ const StyledBackground = styled.div`
   ${({ checkState }) => {
     if (checkState === 'checkIn') {
       return `background: linear-gradient(90deg, #fff 50%, #F5F5F7 50%)`;
-    } else if (checkState === 'checkout') {
+    } else if (checkState === 'checkOut') {
       return `background: linear-gradient(90deg, #F5F5F7 50%, #fff 50%)`;
     } else if (checkState === 'between') {
       return `background-color: #F5F5F7`;
