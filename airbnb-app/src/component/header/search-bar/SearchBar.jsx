@@ -23,7 +23,6 @@ function SearchBar() {
 const Form = styled.form`
   margin: 30px auto 0;
   max-width: 1070px;
-  min-width: 700px;
   border: 1px solid ${({ theme }) => theme.color.grey4};
   border-radius: ${({ theme }) => theme.borderRadius.radius1};
   background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
