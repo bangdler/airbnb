@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SEARCH_INPUT_TEXT from '@/constants/searchBarText';
 import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 import SearchInput from '@/component/header/search-bar/SearchInput';
+import SearchInputModal from './SearchInputModal';
 
 const searchInputText = Object.entries(SEARCH_INPUT_TEXT);
 
@@ -16,6 +17,7 @@ function SearchBar() {
           <SearchInput key={key} label={label} placeholder={placeholder} isLastElement={isLastElement(index)} />
         ))}
       </Form>
+      <SearchInputModal />
     </>
   );
 }
