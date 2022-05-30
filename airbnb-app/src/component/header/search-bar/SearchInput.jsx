@@ -7,31 +7,26 @@ import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider
 function SearchInput({ label, placeholder, isLastElement }) {
   const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
 
-  const [isFilled, setIsFilled] = useState(false);
+  const [isFilled, setIsFilled] = useState(true);
 
   return (
-    <Container
-      bgColor={currentInput === label ? 'white' : null}
-      width={isLastElement ? 280 : 180}
-      tabIndex="0"
-      onFocus={() => updateFocusState(label)}
-    >
+    <Container bgColor={currentInput === label ? 'white' : null} tabIndex="0" onFocus={() => updateFocusState(label)}>
       <div>
         <Label>{label}</Label>
         <Input type="text" placeholder={placeholder} value={'값넣기'} readOnly />
       </div>
       <ResetButton display={isFilled ? 'block' : 'none'} />
-      {isLastElement ? <SearchButton isFocus={isFocus} /> : <Line />}
+      {isLastElement ? <SearchButton open={isFocus} /> : <Line />}
     </Container>
   );
 }
 
 const Container = styled.div`
+  box-sizing: border-box;
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: ${({ width }) => width}px;
-  height: 37px;
+  width: calc(100% / 4);
   padding: 20px 30px;
   border-radius: ${({ theme }) => theme.borderRadius.radius1};
   background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
@@ -44,6 +39,7 @@ const Label = styled.div`
 `;
 
 const Input = styled.input`
+  width: 100%;
   font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   line-height: 20px;

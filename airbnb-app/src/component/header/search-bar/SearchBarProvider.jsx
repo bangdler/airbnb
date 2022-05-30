@@ -3,16 +3,15 @@ import { createContext, useState } from 'react';
 const SearchBarContext = createContext({});
 
 function SearchBarProvider({ children }) {
-  const [isFocus, setIsFocus] = useState(false);
   const [currentInput, setCurrentInput] = useState(null);
 
+  const isFocus = currentInput === null ? false : true;
+
   const resetFocusState = () => {
-    setIsFocus(false);
     setCurrentInput(null);
   };
 
   const updateFocusState = label => {
-    setIsFocus(true);
     setCurrentInput(label);
   };
 
