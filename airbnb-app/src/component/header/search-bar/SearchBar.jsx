@@ -23,8 +23,8 @@ function SearchBar() {
             <SearchInput
               label={label}
               placeholder={placeholder}
-              isLastElement={isLastElement(index) ? true : false}
-              isCurrentInput={isCurrentInput(label) ? true : false}
+              isLastElement={isLastElement(index)}
+              isCurrentInput={isCurrentInput(label)}
               isFocus={isFocus}
               setCurrentInput={setCurrentInput}
             />
@@ -35,18 +35,18 @@ function SearchBar() {
   );
 }
 
-const SearchMenu = styled.span`
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+const SearchMenu = styled.div`
   display: flex;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.color.grey4};
   border-radius: ${({ theme }) => theme.borderRadius.radius1};
   background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
-`;
-
-const Form = styled.form`
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
 `;
 
 export default SearchBar;

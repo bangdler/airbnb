@@ -21,12 +21,25 @@ function SearchInput({ label, placeholder, isLastElement, isCurrentInput, isFocu
         <Label>{label}</Label>
         <Input type="text" placeholder={placeholder} readOnly />
       </div>
-      <ResetButton visibility={isFilled ? 'visible' : 'hidden'} />
+      <ResetButton display={isFilled ? 'block' : 'none'} />
       {isLastElement ? null : <Line />}
       {isLastElement ? <SearchButton isFocus={isFocus} /> : null}
     </Container>
   );
 }
+
+const Container = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  ${({ isLastElement }) => {
+    return isLastElement ? `width: 280px;` : `width: 180px;`;
+  }}
+  height: 37px;
+  padding: 20px 30px;
+  border-radius: ${({ theme }) => theme.borderRadius.radius1};
+  background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
+`;
 
 const Label = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
@@ -45,19 +58,6 @@ const Line = styled.span`
   right: 0;
   height: 44px;
   border-left: 1px solid ${({ theme }) => theme.color.grey5};
-`;
-
-const Container = styled.div`
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  ${({ isLastElement }) => {
-    return isLastElement ? `width: 280px;` : `width: 180px;`;
-  }}
-  height: 37px;
-  padding: 20px 30px;
-  border-radius: ${({ theme }) => theme.borderRadius.radius1};
-  background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
 `;
 
 export default SearchInput;
