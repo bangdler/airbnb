@@ -13,7 +13,7 @@ function SearchInput({ label, placeholder, value, isLastElement }) {
         <Label>{label}</Label>
         <Input type="text" placeholder={placeholder} value={value} readOnly />
       </div>
-      <ResetButton display={value ? 'block' : 'none'} />
+      <ResetButton display={value && isFocus ? 'block' : 'none'} />
       {isLastElement ? <SearchButton open={isFocus} /> : <Line />}
     </Container>
   );
