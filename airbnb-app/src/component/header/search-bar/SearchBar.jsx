@@ -4,7 +4,7 @@ import SEARCH_INPUT_TEXT from '@/constants/searchBarText';
 import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 import SearchInput from '@/component/header/search-bar/SearchInput';
 import SearchInputModal from './SearchInputModal';
-import { CalenderDateContext } from '@component/header/calender/CalenderDateProvider';
+import { CalenderDateContext } from '@calender/CalenderDateProvider';
 
 const searchInputText = Object.entries(SEARCH_INPUT_TEXT);
 

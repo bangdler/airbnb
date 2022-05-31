@@ -1,7 +1,7 @@
 import { useMemo, useContext } from 'react';
 import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 import SEARCH_INPUT_TEXT from '@/constants/searchBarText';
-import Calender from '@/component/header/calender/Calender';
+import Calender from '@calender/Calender';
 
 function SearchInputModal() {
   const { currentInput } = useContext(SearchBarContext);

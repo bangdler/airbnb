@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
-import { CalenderDateContext } from '@/component/header/calender/CalenderDateProvider';
+import { CalenderDateContext } from '@calender/CalenderDateProvider';
 import { CALENDER_MODE, DATE_CHECK_STATE } from '@/constants/calenderText';
 import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 

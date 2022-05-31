@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
-import { CalenderDateContext } from '@/component/header/calender/CalenderDateProvider';
-import CalenderPage from '@/component/header/calender/CalenderPage';
-import PrevButton from '@/component/header/calender/PrevButton';
-import NextButton from '@/component/header/calender/NextButton';
+import { CalenderDateContext } from '@calender/CalenderDateProvider';
+import CalenderPage from '@calender/CalenderPage';
+import PrevButton from '@calender/PrevButton';
+import NextButton from '@calender/NextButton';
 import { ModalContainer } from '@/styled-component/ModalContainer';
 
 function Calender({ page = 1 }) {
