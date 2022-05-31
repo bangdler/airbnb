@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import styled from 'styled-components';
-import { CalenderDateContext } from '@calender/CalenderDateProvider';
+import { CalenderDateContext } from '@/context/CalenderDateProvider';
 
 function ResetButton({ display = 'none' }) {
   const { resetInfos } = useContext(CalenderDateContext);

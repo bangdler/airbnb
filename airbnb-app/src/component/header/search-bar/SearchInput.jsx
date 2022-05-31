@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import ResetButton from '@/component/header/search-bar/ResetButton';
 import SearchButton from '@/component/header/search-bar/SearchButton';
-import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
+import { SearchBarContext } from '@/context/SearchBarProvider';
 
 function SearchInput({ label, placeholder, value, isLastElement }) {
   const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
