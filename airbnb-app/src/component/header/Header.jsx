@@ -1,4 +1,4 @@
-import customStyled from '@/custom-styled-component/customStyled';
+import customStyled from '@/utils/custom-styled-component/customStyled';
 import { CalenderDateProvider } from '@/component/header/calender/CalenderDateProvider';
 import GNB from '@/component/header/gnb/GNB';
 import SearchBar from '@/component/header/search-bar/SearchBar';
