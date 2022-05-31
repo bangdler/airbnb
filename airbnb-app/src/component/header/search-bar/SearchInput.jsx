@@ -4,7 +4,7 @@ import ResetButton from '@/component/header/search-bar/ResetButton';
 import SearchButton from '@/component/header/search-bar/SearchButton';
 import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
 
-function SearchInput({ label, placeholder, isLastElement }) {
+function SearchInput({ label, placeholder, value, isLastElement }) {
   const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
 
   const [isFilled, setIsFilled] = useState(true);
@@ -13,7 +13,7 @@ function SearchInput({ label, placeholder, isLastElement }) {
     <Container bgColor={currentInput === label ? 'white' : null} tabIndex="0" onFocus={() => updateFocusState(label)}>
       <div>
         <Label>{label}</Label>
-        <Input type="text" placeholder={placeholder} value={'값넣기'} readOnly />
+        <Input type="text" placeholder={placeholder} value={value} readOnly />
       </div>
       <ResetButton display={isFilled ? 'block' : 'none'} />
       {isLastElement ? <SearchButton open={isFocus} /> : <Line />}
