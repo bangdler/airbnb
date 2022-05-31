@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import ResetButton from '@/component/header/search-bar/ResetButton';
 import SearchButton from '@/component/header/search-bar/SearchButton';
@@ -7,15 +7,13 @@ import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider
 function SearchInput({ label, placeholder, value, isLastElement }) {
   const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
 
-  const [isFilled, setIsFilled] = useState(true);
-
   return (
     <Container bgColor={currentInput === label ? 'white' : null} tabIndex="0" onFocus={() => updateFocusState(label)}>
       <div>
         <Label>{label}</Label>
         <Input type="text" placeholder={placeholder} value={value} readOnly />
       </div>
-      <ResetButton display={isFilled ? 'block' : 'none'} />
+      <ResetButton display={value ? 'block' : 'none'} />
       {isLastElement ? <SearchButton open={isFocus} /> : <Line />}
     </Container>
   );
