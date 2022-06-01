@@ -55,7 +55,7 @@ function PersonnelProvider({ children }) {
   })();
 
   return (
-    <PersonnelContext.Provider value={{ personnel, personnelValue, addPerson, removePerson }}>
+    <PersonnelContext.Provider value={{ personnel, personnelValue, addPerson, removePerson, canNotRemoveAdult }}>
       {children}
     </PersonnelContext.Provider>
   );
