@@ -5,18 +5,20 @@ import { SearchBarContext } from '@/context/SearchBarProvider';
 import SearchInput from '@/component/header/search-bar/SearchInput';
 import SearchInputModal from './SearchInputModal';
 import { CalenderDateContext } from '@/context/CalenderDateProvider';
+import { PersonnelContext } from '@/context/PersonnelProvider';
 
 const searchInputText = Object.entries(SEARCH_INPUT_TEXT);
 
 function SearchBar() {
   const { isFocus, resetFocusState } = useContext(SearchBarContext);
   const { checkInValue, checkOutValue, resetCurDate } = useContext(CalenderDateContext);
+  const { personnelValue } = useContext(PersonnelContext);
 
   const values = {
     체크인: checkInValue,
     체크아웃: checkOutValue,
     요금: `~`,
-    인원: `게스트 명, 유아 명`,
+    인원: personnelValue,
   };
 
   function handleBlur() {

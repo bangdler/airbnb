@@ -30,8 +30,15 @@ function PersonnelProvider({ children }) {
     });
   };
 
+  const personnelValue = (() => {
+    const { ADULT, CHILD, INFANT } = PERSONNEL_STATE_KEY;
+    return `게스트${personnel[ADULT] + personnel[CHILD]} 명, 유아${personnel[INFANT]} 명`;
+  })();
+
   return (
-    <PersonnelContext.Provider value={{ personnel, addPerson, removePerson }}>{children}</PersonnelContext.Provider>
+    <PersonnelContext.Provider value={{ personnel, personnelValue, addPerson, removePerson }}>
+      {children}
+    </PersonnelContext.Provider>
   );
 }
 
