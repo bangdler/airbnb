@@ -8,11 +8,17 @@ function ResetButton({ display = 'none', onClick }) {
   };
 
   return (
-    <IconButton display={display} onClick={handleClick} onMouseDown={e => e.preventDefault()}>
-      <ClearIcon fontSize="small" />
-    </IconButton>
+    <Box>
+      <IconButton display={display} onClick={handleClick} onMouseDown={e => e.preventDefault()}>
+        <ClearIcon fontSize="small" />
+      </IconButton>
+    </Box>
   );
 }
+
+const Box = styled.div`
+  width: 5px;
+`;
 
 const IconButton = styled.button`
   display: ${({ display }) => display};
