@@ -8,10 +8,11 @@ function SearchInput({ value, resetBtnHandler, label, placeholder, isLastElement
   const { isFocus, updateFocusState, currentInput } = useContext(SearchBarContext);
 
   const isCurrentInput = currentInput === label;
+
   return (
     <Container
       flexGrow={isLastElement ? 2 : 1}
-      bgColor={currentInput === label ? 'white' : null}
+      bgColor={isCurrentInput ? 'white' : null}
       tabIndex="0"
       onFocus={() => updateFocusState(label)}
     >
