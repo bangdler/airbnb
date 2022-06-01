@@ -48,6 +48,10 @@ function PersonnelProvider({ children }) {
     });
   };
 
+  const resetPersonnel = () => {
+    setPersonnel(initialPersonnel);
+  };
+
   const personnelValue = (() => {
     if (personnel[ADULT] + personnel[CHILD] + personnel[INFANT] === 0) return '';
 
@@ -55,7 +59,9 @@ function PersonnelProvider({ children }) {
   })();
 
   return (
-    <PersonnelContext.Provider value={{ personnel, personnelValue, addPerson, removePerson, canNotRemoveAdult }}>
+    <PersonnelContext.Provider
+      value={{ personnel, personnelValue, addPerson, removePerson, canNotRemoveAdult, resetPersonnel }}
+    >
       {children}
     </PersonnelContext.Provider>
   );
