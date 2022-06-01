@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import PERSONNEL_TEXT from '@/constants/PersonnelText';
+import { PERSONNEL_TEXT } from '@/constants/PersonnelText';
 import { ModalContainer } from '@/styled-component/ModalContainer';
 import PersonnelSelectBox from '@personnel/PersonnelSelectBox';
 
