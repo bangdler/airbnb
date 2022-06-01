@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Controller from '@personnel/Controller';
+import PersonnelController from '@personnel/PersonnelController';
 
 function PersonnelSelectBox({ title, explanation }) {
   return (
@@ -8,7 +8,7 @@ function PersonnelSelectBox({ title, explanation }) {
         <Title>{title}</Title>
         <Explanation>{explanation}</Explanation>
       </div>
-      <Controller />
+      <PersonnelController title={title} />
     </Container>
   );
 }
