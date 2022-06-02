@@ -1,5 +1,5 @@
 import { useMemo, useContext } from 'react';
-import { SearchBarContext } from '@component/header/search-bar/SearchBarProvider';
+import { SearchBarContext } from '@/context/SearchBarProvider';
 import SEARCH_INPUT_TEXT from '@/constants/searchBarText';
 import Calender from '@calender/Calender';
 import Personnel from '@personnel/Personnel';

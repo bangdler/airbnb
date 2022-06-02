@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
-import { CalenderDateContext } from '@calender/CalenderDateProvider';
+import { CalenderDateContext } from '@/context/CalenderDateProvider';
 import CalenderPage from '@calender/CalenderPage';
 import PrevButton from '@calender/PrevButton';
 import NextButton from '@calender/NextButton';

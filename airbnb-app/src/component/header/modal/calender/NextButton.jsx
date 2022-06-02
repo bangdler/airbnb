@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { CalenderDateContext } from '@calender/CalenderDateProvider';
+import { CalenderDateContext } from '@/context/CalenderDateProvider';
 
 function NextButton() {
   const { curDate, setCurDate } = useContext(CalenderDateContext);
