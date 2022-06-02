@@ -16,14 +16,12 @@ export function CalenderDateProvider({ children }) {
   const [checkOutTime, setCheckOutTime] = useState(0);
 
   useEffect(() => {
-    const newCheckInTime =
-      checkInInfo === null ? 0 : new Date(`${checkInInfo.year}-${checkInInfo.month}-${checkInInfo.date}`).getTime();
+    const newCheckInTime = getTimeFromInfo(checkInInfo);
     setCheckInTime(newCheckInTime);
   }, [checkInInfo]);
 
   useEffect(() => {
-    const newCheckOutTime =
-      checkOutInfo === null ? 0 : new Date(`${checkOutInfo.year}-${checkOutInfo.month}-${checkOutInfo.date}`).getTime();
+    const newCheckOutTime = getTimeFromInfo(checkOutInfo);
     setCheckOutTime(newCheckOutTime);
   }, [checkOutInfo]);
 
@@ -41,6 +39,10 @@ export function CalenderDateProvider({ children }) {
     } else {
       setCurDate(initialCurDateState);
     }
+  };
+
+  const getTimeFromInfo = Info => {
+    return Info === null ? 0 : new Date(`${Info.year}-${Info.month}-${Info.date}`).getTime();
   };
 
   return (
