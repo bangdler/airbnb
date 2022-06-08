@@ -33,20 +33,30 @@ function SearchInputModal() {
   return (
     <>
       {modal ? (
-        <Container className="dim" onClick={handleContainerClick}>
-          {modal}
-        </Container>
+        <DimLayer>
+          <Container className="dim" onClick={handleContainerClick}>
+            {modal}
+          </Container>
+        </DimLayer>
       ) : null}
     </>
   );
 }
 
-const Container = styled.div`
+const DimLayer = styled.div`
   position: fixed;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100%;
+`;
+
+const Container = styled.div`
+  max-width: 1070px;
+  min-width: 900px;
+  margin: 0 auto;
+  padding: 0 30px;
 `;
 
 export default SearchInputModal;

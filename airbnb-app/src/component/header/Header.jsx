@@ -27,7 +27,7 @@ const Container = customStyled.div`
   box-sizing: border-box;
   position: fixed;
   width: 100%;
-  min-width: 900px;
+  min-width: 960px;
   padding: 0 30px;
 `;
 
