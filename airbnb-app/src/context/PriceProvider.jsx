@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import { MIN_PRICE, MAX_PRICE } from '@/constants/priceText';
+import { convertNumToCurrency } from '@/utils/utils';
 
 const PriceContext = createContext({});
 
@@ -23,16 +24,22 @@ function PriceProvider({ children }) {
     setMax(target.value);
   };
 
-  const priceRange = (() => {
-    const num_min = Number(min);
-    const num_max = Number(max);
-    return `₩${num_min.toLocaleString()} - ₩${num_max.toLocaleString()} ${max === MAX_PRICE ? '+' : ''}`;
-  })();
+  const resetPrice = () => {
+    setMin(MIN_PRICE);
+    setMax(MAX_PRICE);
+  };
 
+  const minToCurrency = convertNumToCurrency(min);
+  const maxToCurrency = convertNumToCurrency(max);
+
+  const priceRange = `₩${minToCurrency} - ₩${maxToCurrency} ${max === MAX_PRICE ? '+' : ''}`;
   const priceAverage = 19283;
 
+  const isInitialState = min === MIN_PRICE && max === MAX_PRICE;
+  const priceValue = `${isInitialState ? '' : `${minToCurrency} - ${maxToCurrency}`}`;
+
   return (
-    <PriceContext.Provider value={{ min, max, updateMin, updateMax, priceRange, priceAverage }}>
+    <PriceContext.Provider value={{ min, max, updateMin, updateMax, resetPrice, priceRange, priceAverage, priceValue }}>
       {children}
     </PriceContext.Provider>
   );
