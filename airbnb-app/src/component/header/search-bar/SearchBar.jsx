@@ -10,7 +10,7 @@ import { PersonnelContext } from '@/context/PersonnelProvider';
 const searchInputText = Object.entries(SEARCH_INPUT_TEXT);
 
 function SearchBar() {
-  const { isFocus, resetFocusState } = useContext(SearchBarContext);
+  const { isFocus } = useContext(SearchBarContext);
   const { checkInValue, checkOutValue, resetCurDate, resetCalenderInfos } = useContext(CalenderDateContext);
   const { personnelValue, resetPersonnel } = useContext(PersonnelContext);
 
@@ -34,7 +34,6 @@ function SearchBar() {
   };
 
   function handleBlur() {
-    resetFocusState();
     resetCurDate();
   }
 

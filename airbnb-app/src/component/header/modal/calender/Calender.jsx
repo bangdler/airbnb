@@ -12,12 +12,7 @@ function Calender({ page = 1 }) {
   const displayPageArray = getDisplayPageArray({ curDate, page });
 
   return (
-    <StyledContainer
-      page={page}
-      onMouseDown={e => {
-        e.preventDefault();
-      }}
-    >
+    <StyledContainer page={page}>
       <PrevButton />
       <NextButton />
       <StyledCalenderPageWrapper page={page}>
