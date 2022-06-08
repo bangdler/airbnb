@@ -3,6 +3,7 @@ import { ModalContainer } from '@/styled-component/ModalContainer';
 import { Title } from '@/styled-component/Title';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import PriceSlider from '@price/PriceSlider';
 import { priceData } from '@/mock-data/priceData';
 
 ChartJS.register(...registerables);
@@ -48,6 +49,7 @@ function Price() {
       <Container>
         <Title>가격 범위</Title>
         <Line type="line" height={'150px'} data={data} options={options} />
+        <PriceSlider />
       </Container>
     </>
   );

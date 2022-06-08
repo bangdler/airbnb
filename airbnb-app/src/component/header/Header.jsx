@@ -4,6 +4,7 @@ import SearchBar from '@/component/header/search-bar/SearchBar';
 import { SearchBarProvider } from '@/context/SearchBarProvider';
 import { CalenderDateProvider } from '@/context/CalenderDateProvider';
 import { PersonnelProvider } from '@/context/PersonnelProvider';
+import { PriceProvider } from '@/context/PriceProvider';
 
 function Header() {
   return (
@@ -12,7 +13,9 @@ function Header() {
       <SearchBarProvider>
         <CalenderDateProvider>
           <PersonnelProvider>
-            <SearchBar />
+            <PriceProvider>
+              <SearchBar />
+            </PriceProvider>
           </PersonnelProvider>
         </CalenderDateProvider>
       </SearchBarProvider>
