@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
-  position: relative;
   padding: 40px;
   margin: 250px auto 0;
   background-color: ${({ theme }) => theme.modal.backgourndColor};
