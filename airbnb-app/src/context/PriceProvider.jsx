@@ -23,7 +23,19 @@ function PriceProvider({ children }) {
     setMax(target.value);
   };
 
-  return <PriceContext.Provider value={{ min, max, updateMin, updateMax }}>{children}</PriceContext.Provider>;
+  const priceRange = (() => {
+    const num_min = Number(min);
+    const num_max = Number(max);
+    return `₩${num_min.toLocaleString()} - ₩${num_max.toLocaleString()} ${max === MAX_PRICE ? '+' : ''}`;
+  })();
+
+  const priceAverage = 19283;
+
+  return (
+    <PriceContext.Provider value={{ min, max, updateMin, updateMax, priceRange, priceAverage }}>
+      {children}
+    </PriceContext.Provider>
+  );
 }
 
 export { PriceContext, PriceProvider };
