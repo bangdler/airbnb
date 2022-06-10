@@ -7,7 +7,7 @@ const personnelText = Object.entries(PERSONNEL_TEXT);
 
 function Personnel() {
   return (
-    <Container onMouseDown={e => e.preventDefault()}>
+    <Container>
       {personnelText.map(([key, { title, explanation }]) => (
         <PersonnelSelectBox key={key} title={title} explanation={explanation} />
       ))}
@@ -16,6 +16,7 @@ function Personnel() {
 }
 
 const Container = styled(ModalContainer)`
+  right: 0;
   width: 400px;
 `;
 
